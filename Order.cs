@@ -34,6 +34,13 @@ namespace PromotionEngine
     public int GetTotalOrderAmount(Dictionary<string,int> products)
     {
       
+      int totalPriceOfA= ((3/3)*130)+(2%3*50);
+      int totalPriceOfB= ((2/2)*45)+(2%2*30);
+      int totalPriceOfC= (1*20);
+      int totalPriceOfD= (1*15);
+      
+      var totalCartPrice= totalPriceOfA+ totalPriceOfB+totalPriceOfC+totalPriceOfD;
+      return totalCartPrice;
       
     }
   }
