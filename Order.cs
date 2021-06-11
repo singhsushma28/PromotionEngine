@@ -33,11 +33,25 @@ namespace PromotionEngine
     
     public int GetTotalOrderAmount(Dictionary<string,int> products)
     {
+      IProduct objProduct= new Product();
+      var unitPrices= objProduct.GetPriceForUnit();
       
-      int totalPriceOfA= ((3/3)*130)+(2%3*50);
-      int totalPriceOfB= ((2/2)*45)+(2%2*30);
-      int totalPriceOfC= (1*20);
-      int totalPriceOfD= (1*15);
+      int productAcount= products[Constants.ProductType.ProductA];
+      int productBcount= products[Constants.ProductType.ProductB];
+      int productCcount= products[Constants.ProductType.ProductC];
+      int productDcount= products[Constants.ProductType.ProductD];
+      
+      int priceOfA= unitPrices.Find(x=> x.unitId== Constants.ProductType.ProductA).UnitPrices;
+      int priceOfB= unitPrices.Find(x=> x.unitId== Constants.ProductType.ProductB).UnitPrices;
+      int priceOfC= unitPrices.Find(x=> x.unitId== Constants.ProductType.Productc).UnitPrices;
+      int priceOfD= unitPrices.Find(x=> x.unitId== Constants.ProductType.ProductD).UnitPrices;
+      
+      
+      
+      int totalPriceOfA= ((productAcount/3)*130)+(productAcount%3*priceOfA);
+      int totalPriceOfB= ((productBcount/2)*45)+(productBcount%2*priceOfB);
+      int totalPriceOfC= productCcount*priceOfC;
+      int totalPriceOfD= productCcount*priceOfD;
       
       var totalCartPrice= totalPriceOfA+ totalPriceOfB+totalPriceOfC+totalPriceOfD;
       return totalCartPrice;
